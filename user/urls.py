@@ -1,7 +1,11 @@
-from django.urls import path
-from .views import UserListCreateView, UserDetailView
+# seu_app/urls.py
+from rest_framework import routers
+from .viewsets import UserViewSet
+from django.urls import path, include
+
+router = routers.DefaultRouter()
+router.register(r'', UserViewSet)
 
 urlpatterns = [
-    path('', UserListCreateView.as_view()),       # GET (list), POST (create)
-    path('<int:pk>/', UserDetailView.as_view()),  # GET (detail), PUT, PATCH, DELETE
+    path('', include(router.urls)),
 ]
