@@ -9,7 +9,7 @@ services:
     environment:
       DB_ENGINE: django.db.backends.postgresql_psycopg2
       DB_HOST: db
-      DB_PORT: 5432
+      DB_PORT: 5433
       DB_NAME: nauticapass
       DB_USER: postgres
       DB_PASSWORD: 123456
