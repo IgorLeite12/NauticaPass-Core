@@ -4,6 +4,5 @@
 .__pycache__/
 *.py[cod]
 .DS_Store
-.env
 media/
 staticfiles/
