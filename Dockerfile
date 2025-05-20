@@ -19,7 +19,7 @@ COPY requirements.txt ./
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copia o restante da aplicação
-COPY . .
+COPY . /app/
 
 # Expõe a porta padrão do Django
 EXPOSE 8000
