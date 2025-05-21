@@ -1,11 +1,7 @@
-# seu_app/urls.py
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
 from .viewsets import UserViewSet
-from django.urls import path, include
 
-router = routers.DefaultRouter()
+router = DefaultRouter()
 router.register(r'', UserViewSet)
 
-urlpatterns = [
-    path('', include(router.urls)),
-]
+urlpatterns = router.urls
