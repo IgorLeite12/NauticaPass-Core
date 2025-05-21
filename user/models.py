@@ -6,6 +6,7 @@ class User(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     cpf = models.CharField(max_length=14, unique=True)
     birth_date = models.DateField(null=True, blank=True)
+    password = models.CharField(max_length=128, default='')
 
     def __str__(self):
         return self.name
