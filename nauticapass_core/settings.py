@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from pathlib import Path
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'nauticapass_core.urls'
@@ -76,8 +79,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
-
-from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # 60 minutos
@@ -130,6 +131,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ORIGINS = [
-    'http://localhost:8080',
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8787",
 ]
