@@ -3,9 +3,9 @@ from user.models import Ticket
 from datetime import date, datetime
 
 class TicketSerializer(serializers.ModelSerializer):
-    id = serializers.CharField(read_only=True)
     purchase_date = serializers.DateField(read_only=True)
     purchase_time = serializers.TimeField(read_only=True)
+    id = serializers.CharField(read_only=True)
 
     class Meta:
         model = Ticket

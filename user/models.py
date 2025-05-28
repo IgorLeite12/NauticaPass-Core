@@ -9,7 +9,10 @@ class User(AbstractUser):
     birth_date = models.DateField(null=True, blank=True)
 
 class Ticket(models.Model):
-    unique_ticket = HashidAutoField(primary_key=True, min_length=9, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
+    id = HashidAutoField(primary_key=True,
+                         min_length=9,
+                         alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+                         )
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tickets')
     origin = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)
