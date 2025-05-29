@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'user',
+    'vessel',
+    'passage',
     'ticket',
     'hashid_field',
 ]

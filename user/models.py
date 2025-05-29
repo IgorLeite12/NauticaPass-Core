@@ -2,6 +2,12 @@ from hashid_field import HashidAutoField
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+class City(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class User(AbstractUser):
     name = models.CharField(max_length=255, blank=True)
     email = models.EmailField(
@@ -32,15 +38,17 @@ class Vessel(models.Model):
 
 class Passage(models.Model):
     id_vessel = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_vessel')
-    origin = models.CharField(max_length=255, blank=True)
-    destination = models.CharField(max_length=255, blank=True)
+    origin = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_origin')
+    destination = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_destination')
     value = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    capacity = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_capacity')
+    capacity = models.PositiveIntegerField()
     travel_date = models.DateField()
-    travel_time = models.TimeField()
+    departure_time = models.TimeField(blank=True, null=True)
     arrival_date = models.DateField()
-    departure_date = models.DateField()
+    arrival_time = models.TimeField(blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.origin} → {self.destination} - {self.id_vessel}"
 
 class Ticket(models.Model):
     id = HashidAutoField(primary_key=True, min_length=9, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')

@@ -9,6 +9,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/user/', include('user.urls')),
+    path('api/vessel/', include('vessel.urls')),
+    path('api/passage/', include('passage.urls')),
     path('api/ticket/', include('ticket.urls')),
     path('api/', include(drf_urls)),
 ]
