@@ -41,7 +41,7 @@ class Passage(models.Model):
     origin = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_origin')
     destination = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_destination')
     value = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    capacity = models.PositiveIntegerField()
+    capacity = models.PositiveIntegerField(null=True, blank=True)
     travel_date = models.DateField()
     departure_time = models.TimeField(blank=True, null=True)
     arrival_date = models.DateField()

@@ -7,10 +7,27 @@ from user.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'name', 'email', 'phone', 'cpf', 'rg', 'birth_date', 'password']
+        fields = ['id',
+                  'username',
+                  'name',
+                  'email',
+                  'phone',
+                  'cpf',
+                  'rg',
+                  'birth_date',
+                  'password']
         extra_kwargs = {
             'password': {'write_only': True},
+            'cpf': {'required': False, 'allow_null': True, 'allow_blank': True},
+            'rg': {'required': False, 'allow_null': True, 'allow_blank': True},
         }
+
+    def validate(self, attrs):
+        if attrs.get('cpf') == '':
+            attrs['cpf'] = None
+        if attrs.get('rg') == '':
+            attrs['rg'] = None
+        return attrs
 
     def create(self, validated_data):
         user = User(
