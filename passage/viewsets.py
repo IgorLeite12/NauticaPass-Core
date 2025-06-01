@@ -9,7 +9,7 @@ class PassageViewSet(viewsets.ModelViewSet):
     queryset = Passage.objects.all()
     serializer_class = PassageSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['origin', 'destination']
+    filterset_fields = ['origin', 'destination', 'value']
 
 
 class CityListView(ListAPIView):
