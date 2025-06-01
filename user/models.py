@@ -37,7 +37,7 @@ class Vessel(models.Model):
 
 
 class Passage(models.Model):
-    id_vessel = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_vessel', null=True, blank=True)
+    id_vessel = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_vessel')
     origin = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_origin')
     destination = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_destination')
     value = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
