@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from user.models import Passage
+from user.models import Passage, City
 
 class PassageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,3 +13,8 @@ class PassageSerializer(serializers.ModelSerializer):
                   'arrival_time',
                   'value',
                   'id_vessel']
+
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = ['id', 'name']

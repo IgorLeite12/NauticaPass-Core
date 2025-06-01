@@ -1,8 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from rest_framework import urls as drf_urls
-from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,5 +10,4 @@ urlpatterns = [
     path('api/vessel/', include('vessel.urls')),
     path('api/passage/', include('passage.urls')),
     path('api/ticket/', include('ticket.urls')),
-    path('api/', include(drf_urls)),
 ]

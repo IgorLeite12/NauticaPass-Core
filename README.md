@@ -52,3 +52,6 @@ python manage.py runserver
 ```
 
 > Inicia o servidor local em `http://127.0.0.1:8000/`.
+> 
+> Arquivo populate_cities.py contem script para popular o banco de dados com cidades para passagens
+> rota que pega todas as cidades cadastradas: http://localhost:8000/api/passage/city/

@@ -8,7 +8,7 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User
+from .models import User, City
 from .serializers import UserSerializer
 
 
@@ -18,6 +18,7 @@ class UserViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['name', 'username', 'email']
     ordering_fields = ['name', 'username', 'email']
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         if self.action == 'create':
@@ -45,4 +46,5 @@ class UserViewSet(viewsets.ModelViewSet):
     #         return Response({'detail': 'Credenciais inválidas.'}, status=status.HTTP_401_UNAUTHORIZED)
     #     except User.DoesNotExist:
     #         return Response({'detail': 'Usuário não encontrado.'}, status=status.HTTP_404_NOT_FOUND)
+
 
