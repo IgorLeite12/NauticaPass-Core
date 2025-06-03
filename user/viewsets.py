@@ -7,23 +7,29 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User, City
 from .serializers import UserSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
+
+class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['name', 'username', 'email']
     ordering_fields = ['name', 'username', 'email']
-    permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        if self.action == 'create':
+    def get_permissions(self):
+        """
+        Define permissões específicas para cada ação.
+        """
+        if self.action == 'create':  # Libera a criação de usuários
             return [AllowAny()]
-        return [IsAuthenticated()]
+        return [IsAuthenticated()]  # Exige autenticação para outras ações
 
     # def update(self, request, *args, **kwargs):
     #     # Verifica se o usuário autenticado é o mesmo que está sendo editado
