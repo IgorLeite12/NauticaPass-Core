@@ -24,3 +24,4 @@ class PassageViewSet(viewsets.ModelViewSet):
 class CityListView(ListAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
+    pagination_class = None

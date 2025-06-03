@@ -19,6 +19,9 @@ class Command(BaseCommand):
             "Oriximiná", "Óbidos", "Alenquer", "Almeirim", "Chaves", "Monte Alegre"
         ]
 
+        cities.sort()
+
         for name in cities:
             City.objects.get_or_create(name=name)
-        self.stdout.write(self.style.SUCCESS('Cidades populadas com sucesso!'))
+
+        self.stdout.write(self.style.SUCCESS('Cidades populadas em ordem alfabética com sucesso!'))
