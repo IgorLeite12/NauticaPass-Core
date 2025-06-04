@@ -1,3 +1,5 @@
+from rest_framework.permissions import IsAuthenticated
+
 from user.models import Passage, City
 from .serializers import PassageSerializer, CitySerializer
 from django_filters import rest_framework as filters
@@ -21,6 +23,7 @@ class PassageViewSet(viewsets.ModelViewSet):
     serializer_class = PassageSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['origin', 'destination', 'value']
+    permission_classes = [IsAuthenticated]
 
 
 class CityListView(ListAPIView):
