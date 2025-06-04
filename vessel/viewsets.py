@@ -23,3 +23,4 @@ class VesselViewSet(viewsets.ModelViewSet):
     serializer_class = VesselSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class =   VesselFilter
+    permission_classes = [IsAuthenticated]
