@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 from django_filters import rest_framework as filters
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
 
 from user.models import Passage, City
 from .serializers import PassageSerializer, CitySerializer
@@ -16,12 +16,19 @@ class PassageFilter(DjangoFilterBackend):
         model = Passage
         fields = ['origin', 'destination', 'value']
 
+
+class ReadOnlyOrAuthenticated(BasePermission):
+    def has_permission(self, request, view):
+        if request.method in SAFE_METHODS:
+            return True
+        return request.user and request.user.is_authenticated
+
 class PassageViewSet(viewsets.ModelViewSet):
     queryset = Passage.objects.all()
     serializer_class = PassageSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['origin', 'destination', 'value']
-    permission_classes = [IsAuthenticated]
+    permission_classes = [ReadOnlyOrAuthenticated]
 
 
 class CityListView(ListAPIView):
