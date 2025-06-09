@@ -21,6 +21,24 @@ class User(AbstractUser):
     birth_date = models.DateField(null=True, blank=True)
     cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
     rg = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    passport = models.CharField(max_length=20, unique=True, blank=True, null=True)
+    GENDER_CHOICES = [
+        ('masculino', 'Masculino'),
+        ('feminino', 'Feminino'),
+        ('outro', 'Outro'),
+    ]
+    gender_type = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True, null=True)
+    nationality = models.ForeignKey(
+        'Nationality',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='users'
+    )
+
+class Nationality(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Nome")
+    acronym = models.CharField(max_length=3, unique=True, null=True, blank=True, verbose_name="Sigla ISO")
 
 
 class Vessel(models.Model):
@@ -49,6 +67,7 @@ class Passage(models.Model):
 
     def __str__(self):
         return f"{self.origin} → {self.destination} - {self.id_vessel}"
+
 
 class Ticket(models.Model):
     id = HashidAutoField(primary_key=True, min_length=9, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')

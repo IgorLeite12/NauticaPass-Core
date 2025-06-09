@@ -13,12 +13,15 @@ class UserSerializer(serializers.ModelSerializer):
                   'phone',
                   'cpf',
                   'rg',
+                  'passport',
+                  'gender_type',
                   'birth_date',
                   'password']
         extra_kwargs = {
             'password': {'write_only': True},
             'cpf': {'required': False, 'allow_null': True, 'allow_blank': True},
             'rg': {'required': False, 'allow_null': True, 'allow_blank': True},
+            'passport': {'required': False, 'allow_null': True, 'allow_blank': True},
         }
 
     def validate(self, attrs):
@@ -26,6 +29,8 @@ class UserSerializer(serializers.ModelSerializer):
             attrs['cpf'] = None
         if attrs.get('rg') == '':
             attrs['rg'] = None
+        if attrs.get('passport') == '':
+            attrs['passport'] = None
         return attrs
 
     def create(self, validated_data):
