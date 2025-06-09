@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
                   'name',
                   'email',
                   'phone',
+                  'nationality_type',
                   'cpf',
                   'rg',
                   'passport',

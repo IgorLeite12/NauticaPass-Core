@@ -28,17 +28,11 @@ class User(AbstractUser):
         ('outro', 'Outro'),
     ]
     gender_type = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True, null=True)
-    nationality = models.ForeignKey(
-        'Nationality',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='users'
-    )
-
-class Nationality(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="Nome")
-    acronym = models.CharField(max_length=3, unique=True, null=True, blank=True, verbose_name="Sigla ISO")
+    NATIONALITY_CHOICE = [
+        ('brasileiro', 'Brasileiro'),
+        ('estrangeiro', 'Estrangeiro'),
+    ]
+    nationality_type = models.CharField(max_length=11, choices=NATIONALITY_CHOICE, blank=True, null=True)
 
 
 class Vessel(models.Model):
@@ -55,7 +49,7 @@ class Vessel(models.Model):
 
 
 class Passage(models.Model):
-    id_vessel = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_vessel')
+    id_vessel = models.ForeignKey(Vessel, on_delete=models.CASCADE, related_name='passages_as_vessel', null=True)
     origin = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_origin')
     destination = models.ForeignKey(City, on_delete=models.CASCADE, related_name='passages_destination')
     value = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
