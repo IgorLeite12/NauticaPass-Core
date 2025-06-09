@@ -27,7 +27,7 @@ class PassageViewSet(viewsets.ModelViewSet):
     queryset = Passage.objects.all()
     serializer_class = PassageSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['origin', 'destination', 'value']
+    filterset_fields = ['origin', 'destination', 'travel_date', 'value']
     permission_classes = [ReadOnlyOrAuthenticated]
 
 
