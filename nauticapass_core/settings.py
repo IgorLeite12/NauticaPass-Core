@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'vessel',
     'passage',
     'ticket',
+    'scheduler',
     'hashid_field',
 ]
 

@@ -1,10 +1,18 @@
+import string
+import random
 from django.db import models
-from hashid_field import HashidAutoField
 from user.models import User
 from passage.models import Passage
 
+def generate_unique_id():
+    chars = string.ascii_uppercase + string.digits
+    while True:
+        new_id = ''.join(random.choices(chars, k=9))
+        if not Ticket.objects.filter(id=new_id).exists():
+            return new_id
+
 class Ticket(models.Model):
-    id = HashidAutoField(primary_key=True, min_length=9, alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
+    id = models.CharField(primary_key=True, max_length=9, editable=False, unique=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     passage_id = models.ForeignKey(Passage, on_delete=models.CASCADE, null=True)
     purchase_date = models.DateField()
@@ -14,3 +22,8 @@ class Ticket(models.Model):
         ('cash', 'Boleto'),
     ]
     payment_method = models.CharField(max_length=10, choices=PAYMENT_METHOD)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.id = generate_unique_id()
+        super().save(*args, **kwargs)

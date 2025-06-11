@@ -69,7 +69,7 @@ python manage.py runserver
 - Arquivo `populate_cities.py`: contém um script para preencher o banco com dados de cidades para passagens.
 - Para executar o script de população, utilize o seguinte comando:
 ```bash
-python manage.py runscript populate_cities
+python manage.py populate_cities 
 ```
 - Para acessar as cidades cadastradas:  
   **Rota de API:**  
