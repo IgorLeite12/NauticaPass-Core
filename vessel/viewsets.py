@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
-from user.models import Vessel
+from rest_framework.permissions import IsAuthenticated
+from vessel.models import Vessel
 from .serializers import VesselSerializer
 
 

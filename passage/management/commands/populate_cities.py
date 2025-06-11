@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from user.models import City
+from passage.models import City
 
 class Command(BaseCommand):
     help = 'Popula o banco com a lista de cidades'

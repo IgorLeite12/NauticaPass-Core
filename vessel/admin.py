@@ -1,5 +1,5 @@
 from django.contrib import admin
-from user.models import Vessel
+from vessel.models import Vessel
 
 @admin.register(Vessel)
 class VesselAdmin(admin.ModelAdmin):

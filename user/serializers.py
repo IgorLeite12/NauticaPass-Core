@@ -11,14 +11,18 @@ class UserSerializer(serializers.ModelSerializer):
                   'name',
                   'email',
                   'phone',
+                  'nationality_type',
                   'cpf',
                   'rg',
+                  'passport',
+                  'gender_type',
                   'birth_date',
                   'password']
         extra_kwargs = {
-            'password': {'write_only': True},
+            'password': {'write_only': True, 'required': False},
             'cpf': {'required': False, 'allow_null': True, 'allow_blank': True},
             'rg': {'required': False, 'allow_null': True, 'allow_blank': True},
+            'passport': {'required': False, 'allow_null': True, 'allow_blank': True},
         }
 
     def validate(self, attrs):
@@ -26,9 +30,13 @@ class UserSerializer(serializers.ModelSerializer):
             attrs['cpf'] = None
         if attrs.get('rg') == '':
             attrs['rg'] = None
+        if attrs.get('passport') == '':
+            attrs['passport'] = None
         return attrs
 
     def create(self, validated_data):
+        if 'password' not in validated_data:
+            raise serializers.ValidationError({'password': 'Este campo é obrigatório.'})
         user = User(
             username=validated_data['username'],
             name=validated_data['name'],
@@ -44,4 +52,6 @@ class UserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         if 'password' in validated_data:
             validated_data['password'] = make_password(validated_data['password'])
+        else:
+            validated_data.pop('password', None)
         return super().update(instance, validated_data)
