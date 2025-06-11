@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView
 from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
 
-from user.models import Passage, City
+from passage.models import Passage, City
 from .serializers import PassageSerializer, CitySerializer
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend

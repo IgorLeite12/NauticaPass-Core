@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from user.models import Vessel
+from vessel.models import Vessel
 
 class VesselSerializer(serializers.ModelSerializer):
     class Meta:
