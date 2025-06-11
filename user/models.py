@@ -19,7 +19,10 @@ class User(AbstractUser):
     )
     phone = models.CharField(max_length=20, blank=True, null=True)
     birth_date = models.DateField(null=True, blank=True)
-    cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
+    cpf = models.CharField(max_length=14, unique=True, blank=True, null=True,
+                           error_messages={
+                               'unique': 'Este CPF já está sendo usado.'
+                           })
     rg = models.CharField(max_length=20, unique=True, blank=True, null=True)
     passport = models.CharField(max_length=20, unique=True, blank=True, null=True)
     GENDER_CHOICES = [
