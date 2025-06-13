@@ -29,6 +29,6 @@ class Ticket(models.Model):
         if not self.id:
             self.id = generate_unique_id()
         if self.passage_id:
-            self.origin = self.passage_id.origin
-            self.destination = self.passage_id.destination
+            self.origin = self.passage_id.origin.name
+            self.destination = self.passage_id.destination.name
         super().save(*args, **kwargs)

@@ -70,6 +70,8 @@ python manage.py runserver
 - Para executar o script de população, utilize o seguinte comando:
 ```bash
 python manage.py populate_cities 
+python manage.py setup_groups
+
 ```
 - Para acessar as cidades cadastradas:  
   **Rota de API:**  
