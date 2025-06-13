@@ -1,11 +1,12 @@
-from rest_framework.generics import ListAPIView
 from django_filters import rest_framework as filters
-from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
-
-from passage.models import Passage, City
-from .serializers import PassageSerializer, CitySerializer
-from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import BasePermission, SAFE_METHODS, AllowAny, IsAuthenticated
+from passage.models import Passage, City
+from user.permissions import IsProprietarioOrReadOnly
+from .serializers import PassageSerializer, CitySerializer
+
 
 class PassageFilter(DjangoFilterBackend):
     origin = filters.CharFilter(field_name='origin', lookup_expr='icontains')
@@ -28,7 +29,12 @@ class PassageViewSet(viewsets.ModelViewSet):
     serializer_class = PassageSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['origin', 'destination', 'travel_date', 'value']
-    permission_classes = [ReadOnlyOrAuthenticated]
+    permission_classes = [IsProprietarioOrReadOnly]
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
 
 class CityListView(ListAPIView):

@@ -22,8 +22,13 @@ class Ticket(models.Model):
         ('cash', 'Boleto'),
     ]
     payment_method = models.CharField(max_length=10, choices=PAYMENT_METHOD)
+    origin = models.CharField(max_length=100)
+    destination = models.CharField(max_length=100)
 
     def save(self, *args, **kwargs):
         if not self.id:
             self.id = generate_unique_id()
+        if self.passage_id:
+            self.origin = self.passage_id.origin.name
+            self.destination = self.passage_id.destination.name
         super().save(*args, **kwargs)
