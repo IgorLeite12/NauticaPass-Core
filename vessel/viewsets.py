@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from user.permissions import IsProprietario
 from vessel.models import Vessel
@@ -25,4 +25,8 @@ class VesselViewSet(viewsets.ModelViewSet):
     serializer_class = VesselSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class =   VesselFilter
-    permission_classes = [IsProprietario]
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [AllowAny()]
+        return [IsProprietario()]
