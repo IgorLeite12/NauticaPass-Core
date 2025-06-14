@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import PlanView
+from .views import CompletionView
 
 urlpatterns = [
-    path('gerar-roteiro/', PlanView.as_view(), name='gerar-roteiro'),
+    path('completion/', CompletionView.as_view(), name='completion'),
 ]
