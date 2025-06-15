@@ -1,7 +1,9 @@
 from django.db import models
 
 class Vessel(models.Model):
-    name_vessel = models.CharField(max_length=255, unique=True, blank=True)
+    name_vessel = models.CharField(max_length=255, unique=True, blank=True, error_messages={
+            'unique': 'Está embarcação já existe.'
+        })
     name_owner = models.CharField(max_length=255, blank=True)
     capacity = models.PositiveIntegerField(blank=True, null=True)
     NAVIGATION_TYPE_CHOICES = [

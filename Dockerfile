@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando padrão: aplica as migrations e inicia o servidor de desenvolvimento
-CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py populate_cities && python manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py populate_cities && python manage.py setup_groups && python manage.py runserver 0.0.0.0:8000"]

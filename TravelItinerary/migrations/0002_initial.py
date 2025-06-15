@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('scheduler', '0001_initial'),
+        ('TravelItinerary', '0001_initial'),
         ('ticket', '0001_initial'),
     ]
 

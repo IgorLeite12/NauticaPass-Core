@@ -11,5 +11,5 @@ urlpatterns = [
     path('api/vessel/', include('vessel.urls')),
     path('api/passage/', include('passage.urls')),
     path('api/ticket/', include('ticket.urls')),
-    path('api/scheduler/', include('scheduler.urls')),
+    path('api/TravelItinerary/', include('TravelItinerary.urls')),
 ]
