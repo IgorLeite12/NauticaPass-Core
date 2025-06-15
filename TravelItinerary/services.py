@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from TravelItinerary.models import TravelItinerary
+from ticket.models import Ticket
 
 load_dotenv()
 api_key = os.getenv("OPENROUTER_API_KEY")
@@ -9,6 +11,21 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=api_key,
 )
+
+def get_or_create_itinerary(ticket_id, user):
+    try:
+        itinerary = TravelItinerary.objects.get(passage_id=ticket_id)
+        return itinerary.content, False
+    except TravelItinerary.DoesNotExist:
+        completion = get_completion()
+        content = completion.choices[0].message.content
+        ticket = Ticket.objects.get(id=ticket_id)
+        itinerary = TravelItinerary.objects.create(
+            user=user,
+            passage=ticket,
+            content=content
+        )
+        return itinerary.content, True
 
 def get_completion():
     return client.chat.completions.create(

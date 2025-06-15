@@ -1,18 +1,24 @@
 from rest_framework import serializers
-from passage.serializers import PassageSerializer
+from passage.serializers import PassageSerializer, CitySerializer
 from .models import Ticket
-
+from TravelItinerary.serializer import TravelItinerarySerializer
 
 class TicketSerializer(serializers.ModelSerializer):
     passage = PassageSerializer(source='passage_id', read_only=True)
     origin = serializers.CharField(source='passage_id.origin.name', read_only=True)
-    destination = serializers.CharField(source='passage_id.destination.name', read_only=True)
+    destination = CitySerializer(source='passage_id.destination', read_only=True)
+    itinerary = TravelItinerarySerializer(read_only=True)
 
     class Meta:
         model = Ticket
-        fields = ['id', 'passage', 'purchase_date', 'purchase_time', 'payment_method', 'origin', 'destination']
-        read_only_fields = ['id', 'passage', 'purchase_date', 'purchase_time', 'origin', 'destination']
-
+        fields = [
+            'id', 'passage', 'purchase_date', 'purchase_time',
+            'payment_method', 'origin', 'destination', 'itinerary'
+        ]
+        read_only_fields = [
+            'id', 'passage', 'purchase_date', 'purchase_time',
+            'origin', 'destination', 'itinerary'
+        ]
 
     def create(self, validated_data):
         user = self.context['request'].user
@@ -25,7 +31,7 @@ class TicketSerializer(serializers.ModelSerializer):
         except Passage.DoesNotExist:
             raise serializers.ValidationError({'passage_id': 'Passagem não encontrada.'})
         ticket = Ticket.objects.create(
-            user_id=user,
+            user=user,
             passage_id=passage,
             payment_method=validated_data['payment_method']
         )

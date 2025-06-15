@@ -10,8 +10,8 @@ class TicketViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return Ticket.objects.filter(user_id=self.request.user)
+            return Ticket.objects.filter(user=self.request.user)
         return Ticket.objects.none()
 
     def perform_create(self, serializer):
-        serializer.save(user_id=self.request.user)
+        serializer.save(user=self.request.user)

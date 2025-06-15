@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'vessel',
     'passage',
     'ticket',
-    'scheduler',
+    'TravelItinerary',
     'hashid_field',
 ]
 
