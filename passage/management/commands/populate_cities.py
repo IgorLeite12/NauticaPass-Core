@@ -6,17 +6,30 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         cities = [
-            "Manaus", "Itacoatiara", "Manacapuru", "Parintins", "Tefé", "Coari", "Tabatinga", "Maués",
-            "Iranduba", "Humaitá", "Manicoré", "São Gabriel da Cachoeira", "Lábrea", "Autazes",
-            "Benjamin Constant", "Boca do Acre", "Eirunepé", "Borba", "São Paulo de Olivença",
-            "Barreirinha", "Careiro", "Carauari", "Santo Antônio do Içá", "Nova Olinda do Norte",
-            "Fonte Boa", "Jutaí", "Ipixuna", "Urucurituba", "Novo Aripuanã", "Boa Vista do Ramos",
-            "Codajás", "Beruri", "Apuí", "Nhamundá", "Careiro da Várzea", "Tapauá", "Pauini", "Tonantins",
-            "Barcelos", "Urucará", "Anori", "Envira", "Manaquiri", "Canutama", "Alvarães", "Novo Airão",
-            "Maraã", "Atalaia do Norte", "Uarini", "Santa Isabel do Rio Negro", "Guajará", "Caapiranga",
-            "São Sebastião do Uatumã", "Silves", "Itamarati", "Amaturá", "Juruá", "Itapiranga", "Anamã",
-            "Japurá", "Belém", "Santarém", "Barcarena", "Altamira", "Itaituba", "Abaetetuba", "Cametá",
-            "Oriximiná", "Óbidos", "Alenquer", "Almeirim", "Chaves", "Monte Alegre"
+            "Abaetetuba - PA", "Alenquer - PA", "Almeirim - PA",
+            "Alvarães - AM", "Amaturá - AM", "Anamã - AM",
+            "Anori - AM", "Apuí - AM", "Atalaia do Norte - AM",
+            "Autazes - AM", "Barcarena - PA", "Barcelos - AM",
+            "Barreirinha - AM", "Belém - PA", "Benjamin Constant - AM",
+            "Beruri - AM", "Boa Vista do Ramos - AM", "Boca do Acre - AM",
+            "Borba - AM", "Caapiranga - AM", "Cametá - PA",
+            "Canutama - AM", "Careiro - AM", "Careiro da Várzea - AM",
+            "Carauari - AM", "Chaves - PA", "Codajás - AM",
+            "Coari - AM", "Envira - AM", "Eirunepé - AM",
+            "Fonte Boa - AM", "Guajará - AM", "Humaitá - AM",
+            "Ipixuna - AM", "Iranduba - AM", "Itacoatiara - AM",
+            "Itaituba - PA", "Itamarati - AM", "Itapiranga - AM",
+            "Japurá - AM", "Juruá - AM", "Jutaí - AM",
+            "Lábrea - AM", "Manaquiri - AM", "Manaus - AM",
+            "Manacapuru - AM", "Manicoré - AM", "Maraã - AM",
+            "Maués - AM", "Monte Alegre - PA", "Nhamundá - AM",
+            "Nova Airão - AM", "Nova Olinda do Norte - AM", "Novo Aripuanã - AM",
+            "Óbidos - PA", "Oriximiná - PA", "Parintins - AM",
+            "Pauini - AM", "Santarém - PA", "Santa Isabel do Rio Negro - AM",
+            "Santo Antônio do Içá - AM", "São Gabriel da Cachoeira - AM", "São Paulo de Olivença - AM",
+            "São Sebastião do Uatumã - AM", "Silves - AM", "Tabatinga - AM",
+            "Tapauá - AM", "Tefé - AM", "Tonantins - AM",
+            "Uarini - AM", "Urucará - AM", "Urucurituba - AM"
         ]
 
         cities.sort()

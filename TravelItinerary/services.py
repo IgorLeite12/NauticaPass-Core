@@ -30,16 +30,26 @@ def get_or_create_itinerary(ticket_id, user):
         return itinerary.content, True
 
 def get_completion(ticket):
+    name_user = ticket["user"]["username"]
     city_name = ticket["destination"]["name"]
 
-    prompt = f"""Você é um guia turístico amigável e experiente da região amazônica.
-O nosso cliente, Igor, acaba de comprar uma passagem de barco para a cidade de {city_name} e precisa de um roteiro.
-Sua tarefa é criar um roteiro de viagem simples e envolvente de 7 dias para a cidade de '{city_name}'.
-Por favor, siga estas instruções:
-1. Estruture o roteiro dia a dia (Dia 1, Dia 2, etc.).
-2. Para cada dia, sugira 2 a 3 atividades, incluindo pontos turísticos e comidas típicas.
-3. Ao final, adicione uma seção "Para Viagens Mais Longas:" com sugestões extras.
-4. Use um tom acolhedor e empolgante."""
+    prompt = f"""
+    Você é um guia turístico amigável e experiente da região amazônica.
+
+    O cliente {name_user} acabou de comprar uma passagem de barco com destino à cidade de {city_name} e precisa da sua ajuda.
+
+    Sua missão é criar um roteiro de viagem confiável, empolgante e acolhedor, com duração de 7 dias, focado nas principais atrações, eventos culturais e comidas típicas que a cidade de {city_name} oferece.
+
+    Siga estas instruções:
+
+    📅 Estruture o roteiro por dia (Dia 1, Dia 2, etc.).
+    🎯 Em cada dia, recomende de 2 a 3 atividades: podem incluir visitas a pontos turísticos, experiências culturais, eventos locais e pratos típicos.
+    ✨ Ao final do roteiro, adicione uma seção chamada "Para Viagens Mais Longas" com sugestões extras para quem pretende ficar mais tempo na cidade.
+    📝 Não use formatações como ###, ** ou qualquer outro caractere de estilização Markdown, pois o conteúdo será exibido diretamente na tela do usuário.
+    🙂 Use emojis e uma linguagem acessível para tornar a leitura mais agradável, sem exageros.
+
+    É essencial que as informações sejam verídicas e coerentes com a realidade da cidade de {city_name}, com foco em proporcionar uma experiência inesquecível para o viajante.
+    """
 
     return client.chat.completions.create(
         extra_headers={

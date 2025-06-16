@@ -13,6 +13,7 @@ class UserViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['name', 'username', 'email']
     ordering_fields = ['name', 'username', 'email']
+
     def get_permissions(self):
         if self.action == 'create':
             return [AllowAny()]

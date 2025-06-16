@@ -1,18 +1,16 @@
-from rest_framework import viewsets
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated, AllowAny
-
-from user.permissions import IsProprietario
+from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
+from passage.permissions import IsProprietary
 from vessel.models import Vessel
 from .serializers import VesselSerializer
-
 
 
 class VesselFilter(filters.FilterSet):
     name_vessel = filters.CharFilter(field_name='name_vessel', lookup_expr='icontains')
     name_owner = filters.CharFilter(field_name='name_owner', lookup_expr='icontains')
-    capacity = filters.CharFilter(field_name='capacity', lookup_expr='icontains')  # Corrigido aqui
+    capacity = filters.CharFilter(field_name='capacity', lookup_expr='icontains')
     navigation_type = filters.CharFilter(field_name='navigation_type', lookup_expr='icontains')
 
     class Meta:
@@ -29,4 +27,4 @@ class VesselViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [AllowAny()]
-        return [IsProprietario()]
+        return [IsProprietary()]
