@@ -1,9 +1,11 @@
 from rest_framework import serializers
 from passage.serializers import PassageSerializer, CitySerializer
+from user.serializers import UserSerializer
 from .models import Ticket
 from TravelItinerary.serializer import TravelItinerarySerializer
 
 class TicketSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     passage = PassageSerializer(source='passage_id', read_only=True)
     origin = serializers.CharField(source='passage_id.origin.name', read_only=True)
     destination = CitySerializer(source='passage_id.destination', read_only=True)
@@ -12,11 +14,11 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = [
-            'id', 'passage', 'purchase_date', 'purchase_time',
+            'id', 'user', 'passage', 'purchase_date', 'purchase_time',
             'payment_method', 'origin', 'destination', 'itinerary'
         ]
         read_only_fields = [
-            'id', 'passage', 'purchase_date', 'purchase_time',
+            'id', 'user', 'passage', 'purchase_date', 'purchase_time',
             'origin', 'destination', 'itinerary'
         ]
 
