@@ -1,7 +1,6 @@
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
-
-class IsProprietaryOrReadOnly(BasePermission):
+class IsProprietarioOrReadOnly(BasePermission):
     def has_permission(self, request, view):
         if request.method in SAFE_METHODS:
             return True
@@ -13,5 +12,7 @@ class IsProprietaryOrReadOnly(BasePermission):
 
 class IsProprietary(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.is_authenticated and request.user.groups.filter(
-            name='Proprietario').exists()
+        return (request.user
+                and request.user.is_authenticated
+                and request.user.groups.filter(name="Proprietario").exists()
+                )

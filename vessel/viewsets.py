@@ -1,8 +1,9 @@
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
-from passage.permissions import IsProprietary
+from rest_framework.permissions import IsAdminUser
+
+from passage.permissions import IsProprietarioOrReadOnly
 from vessel.models import Vessel
 from .serializers import VesselSerializer
 
@@ -17,14 +18,9 @@ class VesselFilter(filters.FilterSet):
         model = Vessel
         fields = ['name_vessel', 'name_owner', 'capacity', 'navigation_type']
 
-
 class VesselViewSet(viewsets.ModelViewSet):
     queryset = Vessel.objects.all()
     serializer_class = VesselSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_class =   VesselFilter
-
-    def get_permissions(self):
-        if self.action in ['list', 'retrieve']:
-            return [AllowAny()]
-        return [IsProprietary()]
+    filterset_class = VesselFilter
+    permission_classes = [IsProprietarioOrReadOnly | IsAdminUser]
