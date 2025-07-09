@@ -1,10 +1,40 @@
 # ⛵ Projeto NauticaPass-Core
 
-Uma API desenvolvida para fins didáticos e apresentada como parte da nossa **FeiraTech**.
+Uma API desenvolvida com fins didáticos e apresentada como parte da nossa **FeiraTech**.
+
+O NauticaPass é uma solução criada para facilitar a compra de passagens fluviais na região Norte do Brasil, com foco nos estados do Amazonas e Pará. A ideia surgiu a partir da experiência frustrante de um dos desenvolvedores da equipe, que precisou ir pessoalmente ao porto para buscar informações sobre horários e preços — algo comum para muitos moradores da região.
+
+🎯 **Objetivo**
+Atender pessoas que utilizam embarcações fluviais como meio de transporte e enfrentam dificuldades para adquirir passagens de forma acessível e prática. O sistema foi pensado especialmente para quem possui:
+
+Pouco ou nenhum acesso à internet;
+
+Baixo domínio de tecnologia e compras online;
+
+Dificuldade em encontrar informações sobre rotas e preços de passagens.
+
+Nosso foco está em proporcionar:
+
+✅ Facilidade na busca e compra de passagens fluviais;
+
+✅ Experiência acessível para diferentes tipos de usuários;
+
+✅ Redução da necessidade de deslocamentos físicos até os portos.
+
+💡 **Funcionalidade Extra**: Roteiros de Viagem Inteligentes
+Além da venda de passagens, o NauticaPass oferece roteiros personalizados de viagem. Utilizamos a API da OpenRouter, integrada com um modelo de linguagem (LLM), para gerar sugestões de passeios e atividades para viagens de até 7 dias no destino escolhido.
+
+Caso a viagem seja mais longa, o sistema também sugere atividades extras para aproveitar ao máximo o tempo na cidade.
 
 ---
+## ⚙️ Criar e acessar ambiente virtual `.venv`
+Para você poder trabalhar de forma isolada, você vai precisar seguir estes passos para criar um ambiente virtual:
+```bash
+python -m venv .venv
+python .venv\Scripts\activate
+```
 
-## ⚙️ Configuração Inicial
+## ⚙️ Configuração do arquivo `.env`
 
 Para configurar o projeto corretamente, siga as etapas abaixo:
 
