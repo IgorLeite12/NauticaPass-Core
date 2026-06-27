@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from user.models import Passage, City
+
+from account.models import City
+from passage.models import Passage
 
 
 class PassageSerializer(serializers.ModelSerializer):
