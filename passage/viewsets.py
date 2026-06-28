@@ -1,5 +1,6 @@
 from rest_framework.generics import ListAPIView
-from user.models import Passage, City
+from account.models import City
+from passage.models import Passage
 from .serializers import PassageSerializer, CitySerializer
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
