@@ -1,22 +1,23 @@
 from django.db import models
 from account.models import Account
 from core.models import BaseModel
+from django.core.validators import MinValueValidator
+
 
 
 class Vessel(BaseModel):
     name_vessel = models.CharField(
         max_length=50,
-        blank=False
     )
 
     owner = models.ForeignKey(
         Account,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='vessels'
     )
 
     capacity = models.PositiveIntegerField(
-        blank=False,
+        validators=[MinValueValidator(1)]
     )
     
     NAVIGATION_TYPE_CHOICES = [

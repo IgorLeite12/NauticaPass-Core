@@ -2,12 +2,19 @@ from django.db import models
 from core.models import BaseModel
 from passage.models import Passage
 from account.models import Account 
-
-
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator
 
 
+
+class StatusTicket(models.TextChoices):
+    RESERVED = "reserved", "Reservado"
+    EMITTED = "emitted", "Emitido"
+    CANCELED = "canceled", "Cancelado"
+    REIMBURSED = "reimbursed", "Reembolsado"
+    
+    
 class Ticket(BaseModel):
     PAYMENT_METHOD = [
         ("pix", "Pix"),
@@ -46,6 +53,18 @@ class Ticket(BaseModel):
         choices=FORM_OF_PAYMENT_CARD,
         blank=True,
     )
+    
+    price_paid = models.DecimalField(
+    max_digits=10,
+    decimal_places=2,
+    validators=[MinValueValidator(0.01)]
+    )
+    
+    status = models.CharField(
+    max_length=20,
+    choices=StatusTicket.choices,
+    default=StatusTicket.RESERVED,
+)
 
     def clean(self):
         super().clean()
