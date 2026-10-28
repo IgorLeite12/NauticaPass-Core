@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 from core.models import BaseModel
 from vessel.models import Vessel
 from account.models import City
@@ -25,16 +26,22 @@ class Passage(BaseModel):
     )
     
     departure_time = models.DateTimeField(
-        blank=False,
+        blank=True,
+        null=True,
+        default=timezone.now
     )
     
     arrival_time = models.DateTimeField(
-        blank=False,
+        blank=True,
+        null=True,
+        default=timezone.now
     )
     
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        null=True,
+        default=0.0,
         validators=[MinValueValidator(0.01)]
     )
     

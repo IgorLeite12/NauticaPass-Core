@@ -30,12 +30,14 @@ class Ticket(BaseModel):
     account = models.ForeignKey(
         Account,
         on_delete=models.PROTECT,
+        null=True,
         related_name="tickets",
     )
 
     passage = models.ForeignKey(
         Passage,
         on_delete=models.PROTECT,
+        null=True,
         related_name="tickets",
     )
 
@@ -57,6 +59,8 @@ class Ticket(BaseModel):
     price_paid = models.DecimalField(
     max_digits=10,
     decimal_places=2,
+    null=True,
+    default=0.0,
     validators=[MinValueValidator(0.01)]
     )
     
