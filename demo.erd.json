@@ -1,0 +1,369 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dineug/erd-editor/main/json-schema/schema.json",
+  "version": "3.0.0",
+  "settings": {
+    "originX": 0,
+    "originY": 0,
+    "zoomLevel": 1,
+    "show": 431,
+    "database": 4,
+    "databaseName": "",
+    "canvasType": "ERD",
+    "language": 1,
+    "tableNameCase": 4,
+    "columnNameCase": 2,
+    "bracketType": 1,
+    "relationshipDataTypeSync": true,
+    "columnOrder": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "maxWidthComment": -1,
+    "lockSettings": 63
+  },
+  "doc": {
+    "tableIds": [
+      "03h2jkanjpbox4ne8g78jzxsa",
+      "03h2jkzhgrpje3ywartcs6la3",
+      "03h2jljowabmi375891dwq4ir",
+      "03h2jlw74e4u0srifdph7hg7e",
+      "03h2jm77yhvifu1cljowvvvz0"
+    ],
+    "relationshipIds": [
+      "03h2jn46vjlrdwewniua3bscz",
+      "03h2jndtck9kpz3ymavgt1oqn",
+      "03h2jnelalmicjs3thasei59m",
+      "03h2jnhwewlqqh357gg1seemy"
+    ]
+  },
+  "collections": {
+    "tableEntities": {
+      "03h2jkanjpbox4ne8g78jzxsa": {
+        "id": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "Account",
+        "columnIds": [
+          "03h2jkd1zud0xllj0v3rtn7dc",
+          "03h2jkhr277lx1cup7d0gmb7v",
+          "03h2jkoytt4bouqlgi2x1mpng",
+          "03h2jkqbjcoays65f1yf88rmz",
+          "03h2jktbj8w95jqy76ezgrykq",
+          "03h2jn40aqcbiitpg3wiw0536"
+        ],
+        "ui": {
+          "x": -564.5841,
+          "y": 143.7963
+        }
+      },
+      "03h2jkzhgrpje3ywartcs6la3": {
+        "id": "03h2jkzhgrpje3ywartcs6la3",
+        "name": "Passage",
+        "columnIds": [
+          "03h2jl0egbv4wu3c77bekb8n7",
+          "03h2jldep76x0uqpqib5aluof",
+          "03h2jleevai093tv83ts2ltmp",
+          "03h2jlfdwd92exn8bz2iurazb",
+          "03h2jndtck9kpz3ymasy4zwjm",
+          "03h2jnelalmicjs3th9i8wg66"
+        ],
+        "ui": {
+          "x": -566.8994,
+          "y": -155.6926
+        }
+      },
+      "03h2jljowabmi375891dwq4ir": {
+        "id": "03h2jljowabmi375891dwq4ir",
+        "name": "Ticker",
+        "columnIds": [
+          "03h2jlknncbjpyg818q6r5y2p",
+          "03h2jlm0ntlsb47mq27i836rr",
+          "03h2jlnzpisq5uglm2mep98ep",
+          "03h2jlocel9vrzxp4hpbjje2c",
+          "03h2jlpqqx3x5dqygjm9kmat4",
+          "03h2jlrbjt248130303cllg0t",
+          "03h2jlsxnmomqnbxm2dm2icpb",
+          "03h2jnhwewlqqh357gdzbdlv6"
+        ],
+        "ui": {
+          "x": -88.9842,
+          "y": 356.3574
+        }
+      },
+      "03h2jlw74e4u0srifdph7hg7e": {
+        "id": "03h2jlw74e4u0srifdph7hg7e",
+        "name": "Vessel",
+        "columnIds": [
+          "03h2jlxwpoqxvh4s4kmu8fve6",
+          "03h2jlzd69oqx4cp2uzkr2mvg",
+          "03h2jm05rzz21dwp9ertv0ieh",
+          "03h2jm1z3q76g73ym8fl9m2t8",
+          "03h2jn46v8oji8ur6erx28g62"
+        ],
+        "ui": {
+          "x": 151.7234,
+          "y": 95.7597
+        }
+      },
+      "03h2jm77yhvifu1cljowvvvz0": {
+        "id": "03h2jm77yhvifu1cljowvvvz0",
+        "name": "City",
+        "columnIds": [
+          "03h2jm88iet8g459wpevta9xu",
+          "03h2jndnrwdxqxeg34ejajway"
+        ],
+        "ui": {
+          "x": 71.3336,
+          "y": -104.5104
+        }
+      }
+    },
+    "tableColumnEntities": {
+      "03h2jkd1zud0xllj0v3rtn7dc": {
+        "id": "03h2jkd1zud0xllj0v3rtn7dc",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "name",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jkhr277lx1cup7d0gmb7v": {
+        "id": "03h2jkhr277lx1cup7d0gmb7v",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "email",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jkoytt4bouqlgi2x1mpng": {
+        "id": "03h2jkoytt4bouqlgi2x1mpng",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "phone",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jkqbjcoays65f1yf88rmz": {
+        "id": "03h2jkqbjcoays65f1yf88rmz",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "birth_date",
+        "dataType": "DATE",
+        "options": 0
+      },
+      "03h2jktbj8w95jqy76ezgrykq": {
+        "id": "03h2jktbj8w95jqy76ezgrykq",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "name": "cpf",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jn40aqcbiitpg3wiw0536": {
+        "id": "03h2jn40aqcbiitpg3wiw0536",
+        "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+        "options": 10
+      },
+      "03h2jl0egbv4wu3c77bekb8n7": {
+        "id": "03h2jl0egbv4wu3c77bekb8n7",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "name": "vessel",
+        "options": 0
+      },
+      "03h2jldep76x0uqpqib5aluof": {
+        "id": "03h2jldep76x0uqpqib5aluof",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "name": "origin",
+        "options": 0
+      },
+      "03h2jleevai093tv83ts2ltmp": {
+        "id": "03h2jleevai093tv83ts2ltmp",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "name": "destination",
+        "options": 0
+      },
+      "03h2jlfdwd92exn8bz2iurazb": {
+        "id": "03h2jlfdwd92exn8bz2iurazb",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "name": "value",
+        "dataType": "DECIMAL",
+        "options": 0
+      },
+      "03h2jndtck9kpz3ymasy4zwjm": {
+        "id": "03h2jndtck9kpz3ymasy4zwjm",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "options": 8
+      },
+      "03h2jnelalmicjs3th9i8wg66": {
+        "id": "03h2jnelalmicjs3th9i8wg66",
+        "tableId": "03h2jkzhgrpje3ywartcs6la3",
+        "options": 8
+      },
+      "03h2jlknncbjpyg818q6r5y2p": {
+        "id": "03h2jlknncbjpyg818q6r5y2p",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "PAYMENT_METHOD",
+        "options": 0
+      },
+      "03h2jlm0ntlsb47mq27i836rr": {
+        "id": "03h2jlm0ntlsb47mq27i836rr",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "FORM_OF_PAYMENT",
+        "options": 0
+      },
+      "03h2jlnzpisq5uglm2mep98ep": {
+        "id": "03h2jlnzpisq5uglm2mep98ep",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "account",
+        "options": 0
+      },
+      "03h2jlocel9vrzxp4hpbjje2c": {
+        "id": "03h2jlocel9vrzxp4hpbjje2c",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "passage",
+        "options": 0
+      },
+      "03h2jlpqqx3x5dqygjm9kmat4": {
+        "id": "03h2jlpqqx3x5dqygjm9kmat4",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "purchase_datetime",
+        "dataType": "DATETIME",
+        "options": 0
+      },
+      "03h2jlrbjt248130303cllg0t": {
+        "id": "03h2jlrbjt248130303cllg0t",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "payment_method",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jlsxnmomqnbxm2dm2icpb": {
+        "id": "03h2jlsxnmomqnbxm2dm2icpb",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "name": "subtype_card",
+        "options": 0
+      },
+      "03h2jnhwewlqqh357gdzbdlv6": {
+        "id": "03h2jnhwewlqqh357gdzbdlv6",
+        "tableId": "03h2jljowabmi375891dwq4ir",
+        "options": 8
+      },
+      "03h2jlxwpoqxvh4s4kmu8fve6": {
+        "id": "03h2jlxwpoqxvh4s4kmu8fve6",
+        "tableId": "03h2jlw74e4u0srifdph7hg7e",
+        "name": "name_vessel",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jlzd69oqx4cp2uzkr2mvg": {
+        "id": "03h2jlzd69oqx4cp2uzkr2mvg",
+        "tableId": "03h2jlw74e4u0srifdph7hg7e",
+        "name": "owner",
+        "options": 0
+      },
+      "03h2jm05rzz21dwp9ertv0ieh": {
+        "id": "03h2jm05rzz21dwp9ertv0ieh",
+        "tableId": "03h2jlw74e4u0srifdph7hg7e",
+        "name": "capacity",
+        "dataType": "INTEGER",
+        "options": 0
+      },
+      "03h2jm1z3q76g73ym8fl9m2t8": {
+        "id": "03h2jm1z3q76g73ym8fl9m2t8",
+        "tableId": "03h2jlw74e4u0srifdph7hg7e",
+        "name": "navigation_type",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jn46v8oji8ur6erx28g62": {
+        "id": "03h2jn46v8oji8ur6erx28g62",
+        "tableId": "03h2jlw74e4u0srifdph7hg7e",
+        "options": 8
+      },
+      "03h2jm88iet8g459wpevta9xu": {
+        "id": "03h2jm88iet8g459wpevta9xu",
+        "tableId": "03h2jm77yhvifu1cljowvvvz0",
+        "name": "name",
+        "dataType": "CHAR",
+        "options": 0
+      },
+      "03h2jndnrwdxqxeg34ejajway": {
+        "id": "03h2jndnrwdxqxeg34ejajway",
+        "tableId": "03h2jm77yhvifu1cljowvvvz0",
+        "options": 10
+      }
+    },
+    "relationshipEntities": {
+      "03h2jn46vjlrdwewniua3bscz": {
+        "id": "03h2jn46vjlrdwewniua3bscz",
+        "relationshipType": 16,
+        "onDelete": 1,
+        "onUpdate": 1,
+        "start": {
+          "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+          "columnIds": [
+            "03h2jn40aqcbiitpg3wiw0536"
+          ]
+        },
+        "end": {
+          "tableId": "03h2jlw74e4u0srifdph7hg7e",
+          "columnIds": [
+            "03h2jn46v8oji8ur6erx28g62"
+          ]
+        }
+      },
+      "03h2jndtck9kpz3ymavgt1oqn": {
+        "id": "03h2jndtck9kpz3ymavgt1oqn",
+        "relationshipType": 16,
+        "onDelete": 1,
+        "onUpdate": 1,
+        "start": {
+          "tableId": "03h2jm77yhvifu1cljowvvvz0",
+          "columnIds": [
+            "03h2jndnrwdxqxeg34ejajway"
+          ]
+        },
+        "end": {
+          "tableId": "03h2jkzhgrpje3ywartcs6la3",
+          "columnIds": [
+            "03h2jndtck9kpz3ymasy4zwjm"
+          ]
+        }
+      },
+      "03h2jnelalmicjs3thasei59m": {
+        "id": "03h2jnelalmicjs3thasei59m",
+        "relationshipType": 16,
+        "onDelete": 1,
+        "onUpdate": 1,
+        "start": {
+          "tableId": "03h2jm77yhvifu1cljowvvvz0",
+          "columnIds": [
+            "03h2jndnrwdxqxeg34ejajway"
+          ]
+        },
+        "end": {
+          "tableId": "03h2jkzhgrpje3ywartcs6la3",
+          "columnIds": [
+            "03h2jnelalmicjs3th9i8wg66"
+          ]
+        }
+      },
+      "03h2jnhwewlqqh357gg1seemy": {
+        "id": "03h2jnhwewlqqh357gg1seemy",
+        "relationshipType": 16,
+        "onDelete": 1,
+        "onUpdate": 1,
+        "start": {
+          "tableId": "03h2jkanjpbox4ne8g78jzxsa",
+          "columnIds": [
+            "03h2jn40aqcbiitpg3wiw0536"
+          ]
+        },
+        "end": {
+          "tableId": "03h2jljowabmi375891dwq4ir",
+          "columnIds": [
+            "03h2jnhwewlqqh357gdzbdlv6"
+          ]
+        }
+      }
+    }
+  }
+}
