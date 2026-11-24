@@ -14,6 +14,11 @@ class Account(AbstractUser, BaseModel):
         max_length=255,
         blank=True
     )
+    
+    # Remove first_name and last_name fields from AbstractUser
+    first_name=None
+    last_name=None
+    
     email = models.EmailField(
         'email address',
         unique=True,
@@ -21,24 +26,27 @@ class Account(AbstractUser, BaseModel):
             'unique': messages.EMAIL_IN_USING
         }
     )
+    
     phone = models.CharField(
         max_length=20,
         blank=True,
-        null=True
+        null=True,
+        error_messages={
+            'unique': messages.PHONE_IN_USING
+        }
     )
+    
     birth_date = models.DateField(
         null=True,
         blank=True
     )
+    
     cpf = models.CharField(
-        max_length=14,
-        unique=True,
-        blank=False,
-        null=True
-    )
-    rg = models.CharField(
-        max_length=20,
+        max_length=11,
         unique=True,
         blank=True,
-        null=True
+        default="",
+        error_messages={
+            'unique': messages.CPF_IN_USING
+        }
     )
