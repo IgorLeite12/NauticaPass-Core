@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 from vessel.models import Vessel
 from .serializers import VesselSerializer
+from core.permissions import IsOwnerOrReadOnly
 
 
 
@@ -20,4 +22,9 @@ class VesselViewSet(viewsets.ModelViewSet):
     queryset = Vessel.objects.all()
     serializer_class = VesselSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_class =   VesselFilter
+    filterset_class = VesselFilter
+
+    def get_permissions(self):
+        if self.action in ["update", "partial_update", "destroy"]:
+            return [IsOwnerOrReadOnly()]
+        return [IsOwnerOrReadOnly()]
