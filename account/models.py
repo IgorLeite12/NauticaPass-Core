@@ -3,12 +3,6 @@ from account import messages
 from core.models import BaseModel
 from django.contrib.auth.models import AbstractUser
 
-class City(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.name
-
 class Account(AbstractUser, BaseModel):
     name = models.CharField(
         max_length=255,

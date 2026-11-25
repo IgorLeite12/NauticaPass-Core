@@ -4,7 +4,13 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from core.models import BaseModel
 from vessel.models import Vessel
-from account.models import City
+
+
+class City(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
 
 class Passage(BaseModel):
     vessel = models.ForeignKey(
