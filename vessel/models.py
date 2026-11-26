@@ -2,7 +2,6 @@ from django.db import models
 from account.models import Account
 from core.models import BaseModel
 from django.core.validators import MinValueValidator
-from vessel.message import CAPACITY_MUST_BE_POSITIVE
 
 
 
@@ -36,8 +35,3 @@ class Vessel(BaseModel):
     
     def __str__(self):
         return f"Vessel: {self.name_vessel} - Owner: {self.owner} - Navigation Type: {self.navigation_type} - Capacity: {self.capacity}"
-
-
-    def validate_capacity(self):
-        if self.capacity <= 0:
-            raise ValueError(CAPACITY_MUST_BE_POSITIVE)
