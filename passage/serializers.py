@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from account.models import City
-from passage.models import Passage
+from passage.models import Passage, City
 
 
 class PassageSerializer(serializers.ModelSerializer):
@@ -10,12 +9,19 @@ class PassageSerializer(serializers.ModelSerializer):
         fields = ['id',
                   'origin',
                   'destination',
-                  'travel_date',
                   'departure_time',
-                  'arrival_date',
                   'arrival_time',
-                  'value',
-                  'id_vessel']
+                  'price',
+                  'available_seats',
+                  'vessel']
+
+    def validate_vessel(self, value):
+        """Ensure the user owns the vessel when creating a passage"""
+        request = self.context.get('request')
+        if request and hasattr(request, 'user'):
+            if value.owner != request.user:
+                raise serializers.ValidationError("You must own the vessel to create a passage.")
+        return value
 
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
