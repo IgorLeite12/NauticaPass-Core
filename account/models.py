@@ -39,7 +39,8 @@ class Account(AbstractUser, BaseModel):
         max_length=11,
         unique=True,
         blank=True,
-        default="",
+        null=True,
+        default=None,
         error_messages={
             'unique': messages.CPF_IN_USING
         }
