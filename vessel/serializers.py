@@ -6,6 +6,6 @@ class VesselSerializer(serializers.ModelSerializer):
         model = Vessel
         fields = ['id',
                   'name_vessel',
-                  'name_owner',
+                  'owner',
                   'capacity',
                   'navigation_type']
