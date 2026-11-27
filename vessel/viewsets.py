@@ -1,22 +1,10 @@
 from rest_framework import viewsets
-from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated
+from .filter import VesselFilter
 from vessel.models import Vessel
 from .serializers import VesselSerializer
-from core.permissions import IsOwnerOrReadOnly
+from core.permissions import IsOwnerOrReadOnly, PublicReadOnly
 
-
-
-class VesselFilter(filters.FilterSet):
-    name_vessel = filters.CharFilter(field_name='name_vessel', lookup_expr='icontains')
-    name_owner = filters.CharFilter(field_name='name_owner', lookup_expr='icontains')
-    navigation_type = filters.CharFilter(field_name='navigation_type', lookup_expr='icontains')
-
-
-    class Meta:
-        model = Vessel
-        fields = ['name_vessel', 'name_owner', 'navigation_type']
 
 class VesselViewSet(viewsets.ModelViewSet):
     queryset = Vessel.objects.all()
@@ -25,6 +13,10 @@ class VesselViewSet(viewsets.ModelViewSet):
     filterset_class = VesselFilter
 
     def get_permissions(self):
-        if self.action in ["update", "partial_update", "destroy"]:
+        if self.action in ["create", "update", "partial_update", "destroy"]:
             return [IsOwnerOrReadOnly()]
-        return [IsOwnerOrReadOnly()]
+        return [PublicReadOnly()]
+
+    def perform_create(self, serializer):
+        # Set owner to the authenticated user
+        serializer.save(owner=self.request.user)
