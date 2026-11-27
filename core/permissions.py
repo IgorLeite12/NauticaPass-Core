@@ -60,3 +60,16 @@ class IsOwnerOnly(permissions.BasePermission):
     def has_permission(self, request, view):
         # Require authentication for all operations
         return request.user and request.user.is_authenticated
+    
+    
+class PublicReadOnly(permissions.BasePermission):
+    """
+    Permite leitura (GET, HEAD, OPTIONS) para qualquer pessoa (logada ou não).
+    Bloqueia todas as operações de escrita (POST, PUT, PATCH, DELETE) por enquanto.
+    """
+
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return False
+
